@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AuthenticationService } from './authentication.service';
 
 @Component({
   selector: 'crm-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
 
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
     validateNo$InField: 'you should not put $'
   }
 
-  constructor() {
+  constructor(private authentService: AuthenticationService) {
     this.loginForm = new FormGroup({
       login: new FormControl('', [Validators.required, Validators.minLength(3)]),
       password: new FormControl('',[Validators.required, validateNo$InField])
@@ -30,7 +31,11 @@ export class LoginComponent implements OnInit {
   }
 
   login():void {
-    console.log(this.loginForm)
+    const user = this.authentService.authentUser(
+        this.loginForm.value.login,
+        this.loginForm.value.password
+    )
+    console.log(user);
   }
 
 }
