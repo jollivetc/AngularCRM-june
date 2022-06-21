@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'crm-root',
@@ -11,9 +12,14 @@ export class AppComponent {
 
   fruits:string[]=['apple', 'pear','banana'];
 
-
+  handleForm(ngForm: NgForm){
+    console.log(ngForm.value);
+  }
+  
   clicked($event:MouseEvent):void{
     this.name = "John";
     console.log($event);
   }
+
+
 }

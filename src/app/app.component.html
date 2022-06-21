@@ -9,3 +9,10 @@
 <ul>
   <li *ngFor="let fruit of fruits; let isOdd = odd" [ngClass]="{odd:isOdd}">{{fruit}}</li>
 </ul>
+
+<form #myForm="ngForm" (ngSubmit)="handleForm(myForm)">
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" ngModel>
+  <button type="submit">Click Me</button>
+</form>
+
