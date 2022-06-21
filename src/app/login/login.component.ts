@@ -1,0 +1,35 @@
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'crm-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
+})
+export class LoginComponent implements OnInit {
+
+  loginForm: FormGroup;
+
+  constructor() {
+    this.loginForm = new FormGroup({
+      login: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      password: new FormControl('',[Validators.required, validateNo$InField])
+    })
+   }
+
+  ngOnInit(): void {
+  }
+
+  login():void {
+    console.log(this.loginForm)
+  }
+
+}
+
+function validateNo$InField(c:AbstractControl): ValidationErrors|null {
+  const value:string = c.value;
+  if(value.indexOf('$')>=0){
+    return {validateNo$InField : 'There should not be $'}
+  }
+  return null;
+}

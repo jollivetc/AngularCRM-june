@@ -1,18 +1,4 @@
 <p>
-<span>{{ title }} app is running!</span>
+<span>{{ title }} </span>
 </p>
-<p>
-<span>my name is {{name}} </span>
-<button (click) = "clicked($event)">Click Me</button>
-</p>
-
-<ul>
-  <li *ngFor="let fruit of fruits; let isOdd = odd" [ngClass]="{odd:isOdd}">{{fruit}}</li>
-</ul>
-
-<form #myForm="ngForm" (ngSubmit)="handleForm(myForm)">
-  <label for="name">Name</label>
-  <input type="text" id="name" name="name" ngModel>
-  <button type="submit">Click Me</button>
-</form>
-
+<crm-login></crm-login>
