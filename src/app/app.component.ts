@@ -9,4 +9,10 @@ import { NgForm } from '@angular/forms';
 export class AppComponent {
   title = 'angularCRM';
 
+  doSomethingOutside($event:string){
+    console.log($event);
+  }
+  doSomethingOutside2($event:string){
+    console.error($event);
+  }
 }

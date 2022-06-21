@@ -6,3 +6,6 @@
   </mat-toolbar>
 </div>
 <crm-login></crm-login>
+
+<crm-dummy label="Hello Everyone" (clicked)="doSomethingOutside($event)"></crm-dummy>
+<crm-dummy [label]="title" (clicked)="doSomethingOutside2($event)"></crm-dummy>
