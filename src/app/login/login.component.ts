@@ -14,6 +14,10 @@ export class LoginComponent implements OnInit {
     required: 'you should put a value',
     minlength: 'at least 3 characters'
   }
+  errorMessagesPassword = {
+    required: 'you should put a value',
+    validateNo$InField: 'you should not put $'
+  }
 
   constructor() {
     this.loginForm = new FormGroup({
