@@ -2,10 +2,20 @@
   <mat-toolbar color="primary">
     <span>{{ title }} </span>
     <span class="fill-space"></span>
-    <span>Right of Screen</span>
+    <span>
+      <a mat-icon-button matTooltip="home"
+        [routerLink]="'home'"
+        [routerLinkActive]="'is-active'">
+        <mat-icon>home</mat-icon>
+      </a>
+      <a mat-icon-button matTooltip="login"
+        [routerLink]="'login'"
+        [routerLinkActive]="'is-active'">
+        <mat-icon>person</mat-icon>
+      </a>
+
+    </span>
   </mat-toolbar>
 </div>
-<crm-login></crm-login>
 
-<crm-dummy label="Hello Everyone" (clicked)="doSomethingOutside($event)"></crm-dummy>
-<crm-dummy [label]="title" (clicked)="doSomethingOutside2($event)"></crm-dummy>
+<router-outlet></router-outlet>
