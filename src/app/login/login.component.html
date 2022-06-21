@@ -1,7 +1,9 @@
 <form [formGroup]="loginForm" (ngSubmit)="login()">
   <p>
-    <label for="login">Login</label>
-   <input type="text" id="login" name="login" formControlName="login">
+    <mat-form-field>
+      <mat-label for="login">Login</mat-label>
+      <input matInput type="text" id="login" name="login" formControlName="login">
+    </mat-form-field>
    <span *ngIf="loginForm.get('login')?.touched || loginForm.get('login')?.dirty
                   && !loginForm.get('login')?.errors">
           <span *ngIf="loginForm.get('login')?.errors?.['required']">
@@ -13,10 +15,12 @@
    </span>
   </p>
   <p>
-    <label for="password">password</label>
-    <input type="text" id="password" name="password" formControlName="password" >
+    <mat-form-field>
+      <mat-label for="password">Password</mat-label>
+      <input matInput type="text" id="password" name="password" formControlName="password" >
+    </mat-form-field>
   </p>
   <p>
-    <button type="submit" [disabled]="!loginForm.valid">Validate</button>
+    <button mat-button color="primary" type="submit" [disabled]="!loginForm.valid">Validate</button>
   </p>
 </form>
