@@ -4,15 +4,7 @@
       <mat-label for="login">Login</mat-label>
       <input matInput type="text" id="login" name="login" formControlName="login">
     </mat-form-field>
-   <span *ngIf="loginForm.get('login')?.touched || loginForm.get('login')?.dirty
-                  && !loginForm.get('login')?.errors">
-          <span *ngIf="loginForm.get('login')?.errors?.['required']">
-            you should put a value
-          </span>
-          <span *ngIf="loginForm.get('login')?.errors?.['minlength']">
-            at least 3 characters
-          </span>
-   </span>
+    <crm-help [field]="loginForm.get('login')!" [errorMessages]="errorMessagesLogin"></crm-help>
   </p>
   <p>
     <mat-form-field>

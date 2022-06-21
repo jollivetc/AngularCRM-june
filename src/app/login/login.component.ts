@@ -10,6 +10,11 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
+  errorMessagesLogin = {
+    required: 'you should put a value',
+    minlength: 'at least 3 characters'
+  }
+
   constructor() {
     this.loginForm = new FormGroup({
       login: new FormControl('', [Validators.required, Validators.minLength(3)]),
