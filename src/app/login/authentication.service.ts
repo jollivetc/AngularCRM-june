@@ -17,7 +17,6 @@ export class AuthenticationService {
    }
 
   authentUser(login: string, password:string){
-
     this.user =  {
       id: 1,
       login: login,
@@ -26,5 +25,14 @@ export class AuthenticationService {
     }
     sessionStorage.setItem(USER_TOKEN_KEY, JSON.stringify(this.user))
     return this.user;
+  }
+
+  disconnect():void{
+    this.user= undefined;
+    sessionStorage.removeItem(USER_TOKEN_KEY);
+  }
+
+  get isAuthenticated(): boolean{
+    return this.user !== undefined && this.user !== null;
   }
 }

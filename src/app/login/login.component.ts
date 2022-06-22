@@ -26,6 +26,9 @@ export class LoginComponent implements OnInit {
       login: new FormControl('', [Validators.required, Validators.minLength(3)]),
       password: new FormControl('',[Validators.required, validateNo$InField])
     })
+    if(this.authentService.isAuthenticated){
+      this.authentService.disconnect();
+    }
    }
 
   ngOnInit(): void {
