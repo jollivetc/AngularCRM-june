@@ -12,6 +12,7 @@ import { DummyComponent } from './component/dummy/dummy.component';
 import { HelpComponent } from './component/help/help.component';
 import { HomeComponent } from './home/home.component';
 import { JWTIntercepteurService } from './common/jwtintercepteur.service';
+import { PhonePipe } from './common/phone.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { JWTIntercepteurService } from './common/jwtintercepteur.service';
     LoginComponent,
     DummyComponent,
     HelpComponent,
-    HomeComponent
+    HomeComponent,
+    PhonePipe
   ],
   imports: [
     BrowserModule,

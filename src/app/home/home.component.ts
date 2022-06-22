@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   observable: Observable<number>|null= null;
   private subscriptions : Subscription[]= [];
+  phoneNumber="1234567890"
 
   constructor(private demoObservable: DemoObservableService) { }
 
