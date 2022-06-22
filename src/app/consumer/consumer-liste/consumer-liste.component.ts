@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ConsumerService } from '../consumer.service';
+import { Consumer } from '../model/consumer';
 
 @Component({
   selector: 'crm-consumer-liste',
@@ -9,7 +10,7 @@ import { ConsumerService } from '../consumer.service';
 })
 export class ConsumerListeComponent implements OnInit {
 
-  consumers:Observable<Array<any>>|undefined
+  consumers:Observable<Array<Consumer>>|undefined
 
   constructor(private consumerService: ConsumerService) { }
 

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Consumer } from './model/consumer';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ConsumerService {
 
   constructor(private http: HttpClient) { }
 
-  get():Observable<Array<any>> {
-    return this.http.get<Array<any>>('/api/consumers');
+  get():Observable<Array<Consumer>> {
+    return this.http.get<Array<Consumer>>('/api/consumers');
   }
 }
