@@ -13,4 +13,8 @@ export class ConsumerService {
   get():Observable<Array<Consumer>> {
     return this.http.get<Array<Consumer>>('/api/consumers');
   }
+
+  search(searchString:string):Observable<Array<Consumer>> {
+    return this.http.get<Array<Consumer>>(`/api/consumers?q=${searchString}`);
+  }
 }

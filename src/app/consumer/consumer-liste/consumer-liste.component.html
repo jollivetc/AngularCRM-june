@@ -1,3 +1,4 @@
+<input type="text" (keyup)="search()" [(ngModel)]="searchString">
 
 <table>
   <tr *ngFor="let consumer of consumers | async">
