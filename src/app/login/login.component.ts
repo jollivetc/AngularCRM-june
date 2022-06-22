@@ -35,13 +35,18 @@ export class LoginComponent implements OnInit {
   }
 
   login():void {
-    const user = this.authentService.authentUser(
+    this.authentService.authentUser(
         this.loginForm.value.login,
         this.loginForm.value.password
-    )
-    if(user){
-      this.router.navigateByUrl('/home')
-    }
+      ).subscribe({
+        next:(data)=>{
+          this.router.navigateByUrl('/home')
+        },
+        error: (error)=>{
+          alert(error)
+        },
+        complete:()=>{}
+      });
   }
 
 }
