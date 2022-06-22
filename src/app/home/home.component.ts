@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscriber } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { map, Observable, Subscriber, Subscription, take } from 'rxjs';
 import { DemoObservableService } from '../common/demo-observable.service';
 
 @Component({
@@ -7,7 +7,10 @@ import { DemoObservableService } from '../common/demo-observable.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+
+  observable: Observable<number>|null= null;
+  private subscriptions : Subscription[]= [];
 
   constructor(private demoObservable: DemoObservableService) { }
 
@@ -20,6 +23,12 @@ export class HomeComponent implements OnInit {
       error: (error:Error)=>{console.error(error)},
       complete:()=>{console.log('finished')}
     }
-    this.demoObservable.testObservable().subscribe(subscriber);
+    this.observable = this.demoObservable.testObservable();
+    const subscription= this.observable.subscribe(subscriber);
+    this.subscriptions.push(subscription);
+  }
+
+  ngOnDestroy(): void {
+      this.subscriptions.forEach(s=>s.unsubscribe())
   }
 }
