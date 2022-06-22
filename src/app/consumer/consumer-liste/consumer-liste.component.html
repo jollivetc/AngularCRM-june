@@ -1,4 +1,7 @@
 <input type="text" (keyup)="search()" [(ngModel)]="searchString">
+<a mat-icon-button routerLink="/consumer" routerLinkActive="is-active" >
+  <mat-icon>PersonAdd</mat-icon>
+</a>
 
 <table>
   <tr *ngFor="let consumer of consumers | async">
