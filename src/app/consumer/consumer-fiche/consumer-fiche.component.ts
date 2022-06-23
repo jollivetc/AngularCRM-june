@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ConsumerService } from '../consumer.service';
 import { Consumer } from '../model/consumer';
@@ -15,7 +15,8 @@ export class ConsumerFicheComponent implements OnInit, OnDestroy {
   consumerForm: FormGroup;
   private subs:Subscription[]=[];
 
-  constructor(private consumerService:ConsumerService, private router:Router) {
+  constructor(private consumerService:ConsumerService, private router:Router,
+              private route: ActivatedRoute) {
     this.consumerForm= new FormGroup({
       id:new FormControl('',[]),
       civility: new FormControl('',[Validators.required]),
@@ -29,6 +30,21 @@ export class ConsumerFicheComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit(): void {
+    const subscription = this.route.paramMap.subscribe({
+      next:(param:ParamMap)=>{
+        const id = param.get('id');
+        if(id){
+          this.consumerService.getById(id).subscribe({
+            next:(consumer:Consumer)=>{this.consumerForm.patchValue(consumer)},
+            error: (error)=>{console.error(error)},
+            complete: ()=>{}
+          })
+        }
+      },
+      error:(error)=>{console.error(error)},
+      complete:()=>{}
+    })
+    this.subs.push(subscription);
   }
 
   ngOnDestroy(): void {

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Cons, Observable } from 'rxjs';
 import { Consumer } from './model/consumer';
 
 @Injectable({
@@ -19,6 +20,13 @@ export class ConsumerService {
   }
 
   save(consumer: Consumer): Observable<Consumer>{
+    if(consumer.id){
+      return this.http.put<Consumer>(`/api/consumers/${consumer.id}`, consumer)
+    }
     return this.http.post<Consumer>('/api/consumers', consumer);
+  }
+
+  getById(id:string):Observable<Consumer>{
+    return this.http.get<Consumer>(`/api/consumers/${id}`);
   }
 }
