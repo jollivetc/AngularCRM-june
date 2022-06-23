@@ -22,4 +22,12 @@ export class ConsumerListeComponent implements OnInit {
   search(){
     this.consumers = this.consumerService.search(this.searchString);
   }
+
+  delete(consumer:Consumer){
+    this.consumerService.delete(consumer).subscribe({
+      next:(data)=>{this.consumers = this.consumerService.get()},
+      error:(error)=>{console.error(error)},
+      complete:()=>{}
+    })
+  }
 }

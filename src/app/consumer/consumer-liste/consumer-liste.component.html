@@ -14,6 +14,9 @@
       <a mat-icon-button [routerLink]="['/consumer', consumer.id]">
         <mat-icon>edit</mat-icon>
       </a>
+      <a mat-icon-button (click)="delete(consumer)">
+        <mat-icon>delete</mat-icon>
+      </a>
     </td>
   </tr>
 </table>
